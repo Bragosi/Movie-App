@@ -1,12 +1,17 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/bragosiLogo.png";
 import { navigation } from "../Contants/index";
-import { FaUser, FaSearch } from "react-icons/fa";
+import { IoSearchOutline } from "react-icons/io5";
 import { useState } from "react";
+import MenuSvg from "../assets/MenuSvg";
+import { disablePageScroll, enablePageScroll } from "scroll-lock";
+import Button from "../assets/Button";
+
 
 const Header = () => {
   const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
+  const [openNavigation, setOpenNavigation] = useState(false);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -15,20 +20,39 @@ const Header = () => {
     }
   };
 
+  const toggleNavigation = () => {
+    setOpenNavigation((prev) => {
+      if (prev) {
+        enablePageScroll();
+        return false;
+      } else {
+        disablePageScroll();
+        return true;
+      }
+    });
+  };
+
+  const handleNavLinkClick = () => {
+    setOpenNavigation(false);
+    enablePageScroll();
+  };
+
   return (
     <header className="fixed top-0 w-full h-16 z-50 border-b border-n-6 backdrop-blur-sm bg-n-8">
       <div className="w-full mx-auto h-full justify-between flex items-center px-3 gap-10">
-        {/** Logo Section */}
-        <div className="relative flex gap-2 flex-row">
+        {/* Logo Section */}
+        <Link to="/" className="relative flex gap-2 flex-row">
           <img src={logo} alt="logo" width={70} height={50} />
           <h1 className="hidden md:block text-2xl font-sans text-white items-center justify-center mt-10">
             Movie App
           </h1>
-        </div>
+        </Link>
 
-        {/** Navigation Menu */}
-        <div className="relative hidden lg:flex flex-row items-center justify-center gap-4">
-          {navigation.map((item) => (
+        {/* Navigation Menu for Larger Screens */}
+        <div className="relative hidden lg:flex flex-row items-center justify-center gap-10">
+          {navigation.map((item) => {
+            const Icon =item.icon
+            return(
             <NavLink
               key={item.id}
               to={item.url}
@@ -38,14 +62,20 @@ const Header = () => {
                   : "text-white hover:text-gray-400"
               }
             >
-              {item.title}
+              <div className="flex items-center gap-1 justify-center">
+                  {item.title}
+                <Icon className="w-4 h-4" />
+              </div>
             </NavLink>
-          ))}
+          )})}
         </div>
 
-        {/** Search and User Section */}
+        {/* Search and User Section */}
         <div className="relative md:mr-[4rem] flex gap-6 mr-6 items-center">
-          <form className="flex border-b" onSubmit={handleSearchSubmit}>
+          <form
+            className="flex border-n-14 border rounded-xl h-10 w-[17rem] p-1"
+            onSubmit={handleSearchSubmit}
+          >
             <input
               type="text"
               placeholder="Search here"
@@ -56,17 +86,44 @@ const Header = () => {
             <button
               type="submit"
               disabled={!searchInput.trim()}
-              className="border w-8 h-8 justify-center items-center flex rounded-xl mb-1 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full ml-4 border-n-4 cursor-pointer justify-center border-l items-center flex rounded-none"
             >
-              <FaSearch aria-label="Search" className="text-lg hover:text-n-14 active:scale-50" />
+              <IoSearchOutline
+                aria-label="Search"
+                className="text-lg w-full text-white active:scale-50"
+              />
             </button>
           </form>
-          <FaUser
-            className="text-2xl bg-n-14 w-8 h-8 rounded-full p-1 hover:text-n-14 active:scale-50 hover:bg-n-1"
-            aria-label="User Profile"
-          />
+         <Button
+  className="lg:hidden ml-auto min-w-[3rem]" // Ensure enough width for ButtonSvg
+  px="px-3"
+  onClick={toggleNavigation}
+  
+>
+  <MenuSvg openNavigation={openNavigation} />
+</Button>
         </div>
       </div>
+
+      {/* Mobile Navigation Menu */}
+      {openNavigation && (
+        <div className="lg:hidden fixed top-16 left-0 w-full bg-n-8 border-b border-n-6 z-40 flex flex-col items-center gap-4 py-4">
+          {navigation.map((item) => (
+            <NavLink
+              key={item.id}
+              to={item.url}
+              onClick={handleNavLinkClick}
+              className={({ isActive }) =>
+                isActive
+                  ? "text-n-14 font-bold text-lg"
+                  : "text-white hover:text-gray-400 text-lg"
+              }
+            >
+              {item.title}
+            </NavLink>
+          ))}
+        </div>
+      )}
     </header>
   );
 };

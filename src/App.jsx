@@ -5,10 +5,12 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import ExplorePage from "./Pages/ExplorePage";
 import DetailsPage from "./Pages/DetailsPage";
+import ButtonGradient from './assets/ButtonGradient'
+import MobileNavigation from "./Components/MobileNavigation";
 export default function App() {
   return (
     <Router>
-      <div>
+      <div className="pb-14 lg:pb-0">
         <Header />
         {/* Routes */}
         <div className="mt-16">
@@ -21,6 +23,9 @@ export default function App() {
         </div>
           <Footer />
       </div>
+      <MobileNavigation/>
+      <ButtonGradient/>
     </Router>
+    
   );
 }
