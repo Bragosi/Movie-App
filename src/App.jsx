@@ -7,12 +7,35 @@ import ExplorePage from "./Pages/ExplorePage";
 import DetailsPage from "./Pages/DetailsPage";
 import ButtonGradient from './assets/ButtonGradient'
 import MobileNavigation from "./Components/MobileNavigation";
+import axios from "axios";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setBannerData } from "./store/MovieSlice";
+
 export default function App() {
+
+  const dispatch = useDispatch()
+
+
+  const fetchTrendingData= async()=>{
+    try{
+      const response = await axios.get('/trending/all/week')
+
+      dispatch(setBannerData(response.data.results))
+
+    } catch(error){
+      console.log("error", error)
+    }
+  }
+
+  useEffect(()=>{
+    fetchTrendingData()
+  }, [])
   return (
     <Router>
       <div className="pb-14 lg:pb-0">
         <Header />
-        {/* Routes */}
+        {/**  Routes */}
         <div className="mt-16">
           <Routes>
           <Route path="/" element={<Homepage />} />
