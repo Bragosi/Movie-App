@@ -1,9 +1,12 @@
-import React from 'react'
+import BannerHome from "../Components/BannerHome"
 
-const  = () => {
+const Homepage = () => {
   return (
-    <div></div>
+   
+    <section>
+      <BannerHome/>
+    </section>
   )
 }
 
-export default 
+export default Homepage
