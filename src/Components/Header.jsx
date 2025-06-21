@@ -39,7 +39,7 @@ const Header = () => {
 
   return (
     <header
-     className="fixed top-0 w-full h-16 z-50 border-b border-n-6 backdrop-blur-sm  bg-n-8">
+     className="fixed bg-opacity-75 top-0 w-full h-16 z-40 border-b border-n-6 backdrop-blur-sm  bg-n-8">
       <div className="w-full mx-auto h-full justify-between flex items-center px-3 gap-10">
         {/* Logo Section */}
         <Link to="/" className="relative flex gap-2 flex-row">

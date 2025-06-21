@@ -49,7 +49,7 @@ export default function App() {
       <Router>
         <div className="pb-14 lg:pb-0">
           <Header />
-          <div className="mt-16">
+          <div className="xl:mt-13 mt-11">
             <Routes>
               <Route path="/" element={<Homepage />} />
               <Route path="/search" element={<SearchPage />} />
