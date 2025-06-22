@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 import moment from 'moment'
+import { Link } from "react-router-dom";
 
 const Card = ({ data, trending, index }) => {
-      console.log("Card Data:", data);
   const imageUrl = useSelector((state) => state.movieData.imageUrl);
   return (
-    <div className="w-full min-w-[230px] max-w-[230px] h-100 relative  rounded overflow-hidden">
+    <Link className="w-full min-w-[230px] max-w-[230px] h-100 relative  rounded overflow-hidden">
       <img src={imageUrl + data?.poster_path} alt="trending-movies" />
     <div className="absolute top-4">
         {trending && 
@@ -23,7 +23,7 @@ const Card = ({ data, trending, index }) => {
               </p>
        </div>
     </div>f
-    </div>
+    </Link>
   );
 };
 

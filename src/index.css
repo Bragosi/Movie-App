@@ -7,5 +7,14 @@
 body{
   margin: 0;
   font-family: "Nunito", sans-serif;
+  scroll-behavior: smooth;
   @apply bg-neutral-900 text-neutral-300
+}
+.noScrollBar {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.noScrollBar::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Edge */
 }
