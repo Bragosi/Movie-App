@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Card = ({ data, trending, index }) => {
   const imageUrl = useSelector((state) => state.movieData.imageUrl);
   return (
-    <Link className="w-full min-w-[230px] max-w-[230px] h-100 relative  rounded overflow-hidden">
+    <Link to={"/"+data.media_type+"/"+data.id} className="w-full min-w-[230px] max-w-[230px] h-100 relative  rounded overflow-hidden">
       <img src={imageUrl + data?.poster_path} alt="trending-movies" />
     <div className="absolute top-4">
         {trending && 
