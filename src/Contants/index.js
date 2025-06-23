@@ -16,12 +16,7 @@ export const navigation = [
     url: "/movies",
     icon: BiSolidMoviePlay
   },
-  {
-    id: "3",
-    title: "Explore",
-    url: "/Explore",
-    icon: FaRocket
-  },
+
 ];
 
 export const mobileNavigation = [

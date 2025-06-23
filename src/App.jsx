@@ -51,11 +51,13 @@ export default function App() {
           <Header />
           <div className="xl:mt-13 mt-11">
             <Routes>
-              <Route path="/" element={<Homepage />} />
-              <Route path="/search" element={<SearchPage />} />
-              <Route path="/Explore" element={<ExplorePage />} />
-              <Route path="/details" element={<DetailsPage />} />
-            </Routes>
+  <Route path="/" element={<Homepage />} />
+  <Route path="/search" element={<SearchPage />} />
+  <Route path="/tv" element={<ExplorePage />} /> {/* Matches /tv */}
+  <Route path="/tv/:explore" element={<ExplorePage />} /> {/* Matches /tv/something */}
+  <Route path="/details" element={<DetailsPage />} />
+</Routes>
+
           </div>
           <Footer />
         </div>
