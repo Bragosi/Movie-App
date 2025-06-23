@@ -8,7 +8,7 @@ body{
   margin: 0;
   font-family: "Nunito", sans-serif;
   scroll-behavior: smooth;
-  @apply bg-neutral-900 text-neutral-300
+  @apply bg-neutral-900 text-neutral-300 p-0 m-0
 }
 .noScrollBar {
   scrollbar-width: none; /* For Firefox */

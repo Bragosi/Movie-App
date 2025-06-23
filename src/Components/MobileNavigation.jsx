@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const MobileNavigation = () => {
   return (
-    <section className="lg:hidden fixed bottom-0 w-full h-14 z-50 border-t border-n-6 backdrop-blur-sm bg-n-8">
+    <section className="lg:hidden fixed bottom-0 w-full h-14 z-50 border-t border-n-6 backdrop-blur-2xl bg-n-8 bg-opacity-70">
       <div className="flex justify-around items-center h-full px-4">
         {mobileNavigation.map((item) => {
           const Icon = item.icon; // Reference the icon component
