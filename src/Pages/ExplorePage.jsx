@@ -1,30 +1,30 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import Card from '../Components/Card';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Card from "../Components/Card";
 
-const ExplorePage = () => {
-  const [data, setData] = useState([]); // Holds the TV data
+const ExplorePage = ({ mediaType }) => {
+  const [data, setData] = useState([]); // Holds the TV or movie data
   const [page, setPage] = useState(1); // Tracks the current page
   const [isLoading, setIsLoading] = useState(false); // Tracks loading state
 
-  const fetchTvData = async () => {
+  const fetchData = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get('/discover/tv', {
+      const response = await axios.get(`/discover/${mediaType}`, {
         params: { page },
       });
       setData((prevData) => [...prevData, ...response.data.results]); // Append new data
       setIsLoading(false);
     } catch (error) {
-      console.error('Error fetching TV data:', error);
+      console.error(`Error fetching ${mediaType} data:`, error);
       setIsLoading(false);
     }
   };
 
   // Fetch initial data and subsequent pages
   useEffect(() => {
-    fetchTvData();
-  }, [page]);
+    fetchData();
+  }, [mediaType, page]);
 
   // Infinite scroll handler
   const handleScroll = () => {
@@ -38,20 +38,22 @@ const ExplorePage = () => {
 
   // Attach the scroll event listener
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll); // Cleanup
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll); // Cleanup
   }, []);
 
   return (
     <section className="py-9">
       <div className="container px-3">
-        <h3 className="capitalize lg:text-xl text-lg font-semibold">Popular TV Shows</h3>
+        <h3 className="capitalize lg:text-xl text-lg font-semibold">
+          {mediaType === "movie" ? "Popular Movies" : "Popular TV Shows"}
+        </h3>
         <div className="grid grid-cols-[repeat(auto-fit,_minmax(230px,_1fr))] gap-6">
           {data.map((exploredata) => (
-            <Card key={exploredata.id} data={exploredata} media_type="/tv" />
+            <Card key={exploredata.id} data={exploredata} media_type={mediaType} />
           ))}
         </div>
-        {isLoading && <p>Loading more shows...</p>}
+        {isLoading && <p>Loading more {mediaType === "movie" ? "movies" : "TV shows"}...</p>}
       </div>
     </section>
   );

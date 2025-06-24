@@ -1,7 +1,6 @@
 import { IoMdHome } from "react-icons/io";
 import { PiTelevisionDuotone } from "react-icons/pi";
 import { BiSolidMoviePlay } from "react-icons/bi";
-import { FaRocket } from "react-icons/fa";
 import { IoSearchOutline } from "react-icons/io5";
 export const navigation = [
   {
@@ -13,7 +12,7 @@ export const navigation = [
   {
     id: "2",
     title: "Movies",
-    url: "/movies",
+    url: "/movie",
     icon: BiSolidMoviePlay
   },
 
@@ -35,7 +34,7 @@ export const mobileNavigation = [
   {
     id: "3",
     title: "Movies",
-    url: "/movies",
+    url: "/movie",
     icon: BiSolidMoviePlay
   },
    {
