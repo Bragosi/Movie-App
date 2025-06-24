@@ -1,14 +1,32 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
-   <footer className='text-center bg-neutral-600 bg-opacity-35 text-neutral-400 py-2' >
-    <div className='flex items-center justify-center gap-4'>
-      <Link to="/">About </Link>
-      <Link to="/">Contact</Link>
-    </div>
-    <p className='text-sm'>Created by Bragosi</p>
-   </footer>
-  )
-}
+    <footer className="bg-neutral-800 text-neutral-400 py-4 relative bottom-0 w-full">
+      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+        {/* Navigation Links */}
+        <div className="flex flex-col md:flex-row items-center gap-6">
+          <Link
+            to="/about"
+            className="hover:text-white transition-colors duration-200"
+          >
+            About
+          </Link>
+          <Link
+            to="/contact"
+            className="hover:text-white transition-colors duration-200"
+          >
+            Contact
+          </Link>
+        </div>
 
-export default Footer
+        {/* Footer Text */}
+        <p className="text-sm text-center md:text-right">
+          Created by <span className="font-semibold text-white">Bragosi</span>
+        </p>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

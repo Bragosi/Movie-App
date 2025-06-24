@@ -49,18 +49,13 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Homepage />} />
               <Route path="/search" element={<SearchPage />} />
-              <Route path="/tv" element={<ExplorePage mediaType="tv" />} />
               <Route
-                path="/tv/:explore"
-                element={<ExplorePage mediaType="tv" />}
-              />{" "}
-              <Route
-                path="/movie"
-                element={<ExplorePage mediaType="movie" />}
+                path="/tv"
+                element={<ExplorePage key="tv" mediaType="tv" />}
               />
               <Route
-                path="/movie/:explore"
-                element={<ExplorePage mediaType="movie" />}
+                path="/movie"
+                element={<ExplorePage key="movie" mediaType="movie" />}
               />
               <Route path="/details" element={<DetailsPage />} />
             </Routes>
