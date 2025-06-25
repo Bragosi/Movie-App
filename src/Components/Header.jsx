@@ -3,15 +3,52 @@ import logo from "../assets/bragosiLogo.png";
 import { navigation } from "../Contants/index";
 import { IoSearchOutline } from "react-icons/io5";
 import { useState } from "react";
+import axios from "axios";
 
 const Header = () => {
   const [searchInput, setSearchInput] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [isSuggestionsVisible, setSuggestionsVisible] = useState(false);
   const navigate = useNavigate();
+
+  const fetchSuggestions = async (query) => {
+    if (!query.trim()) {
+      setSuggestions([]);
+      return;
+    }
+    try {
+      const response = await axios.get("/search/collection", {
+        params: {
+          query,
+          include_adult: false,
+          language: "en-US",
+          page: 1,
+        },
+      });
+      setSuggestions(response.data.results || []);
+      setSuggestionsVisible(true);
+    } catch (error) {
+      console.error("Error fetching suggestions:", error);
+    }
+  };
+
+  const handleSearchInputChange = (e) => {
+    const value = e.target.value;
+    setSearchInput(value);
+    fetchSuggestions(value);
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    setSearchInput(suggestion.name || suggestion.title);
+    navigate(`/search?q=${suggestion.name || suggestion.title}`);
+    setSuggestionsVisible(false);
+  };
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     if (searchInput.trim()) {
-      navigate(`/search?q=${searchInput}`);
+      navigate(`/search?q=${searchInput.trim()}`);
+      setSuggestionsVisible(false);
     }
   };
 
@@ -24,7 +61,7 @@ const Header = () => {
           <h1 className="text-xl font-sans text-white">Movieo</h1>
         </Link>
 
-        {/* Navigation Menu for Larger Screens */}
+        {/* Navigation Menu */}
         <div className="hidden lg:flex items-center gap-8">
           {navigation.map((item) => {
             const Icon = item.icon;
@@ -47,29 +84,44 @@ const Header = () => {
           })}
         </div>
 
-        <div className="relative flex justify-end items-center">
-           <form
-          className="flex items-center bg-n-10 border border-n-6 rounded-full px-3 h-10 w-4/5 sm:w-[17rem] lg:w-[20rem]"
-          onSubmit={handleSearchSubmit}
-        >
-          <input
-            type="text"
-            placeholder="Search here"
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-            className="bg-transparent outline-none px-2 text-white w-full"
-          />
-          <button
-            type="submit"
-            disabled={!searchInput.trim()}
-            className="ml-2 text-white"
+        {/* Search Bar */}
+        <div className="relative">
+          <form
+            className="flex items-center bg-n-10 border border-n-6 rounded-full px-3 h-10 w-4/5 sm:w-[17rem] lg:w-[20rem]"
+            onSubmit={handleSearchSubmit}
           >
-            <IoSearchOutline className="text-lg" />
-          </button>
-        </form>
+            <input
+              type="text"
+              placeholder="Search here"
+              value={searchInput}
+              onChange={handleSearchInputChange}
+              className="bg-transparent outline-none px-2 text-white w-full"
+            />
+            <button
+              type="submit"
+              disabled={!searchInput.trim()}
+              className="ml-2 text-white"
+            >
+              <IoSearchOutline className="text-lg" />
+            </button>
+          </form>
+
+          {/* Suggestions Dropdown */}
+          {isSuggestionsVisible && suggestions.length > 0 && (
+            <ul className="absolute top-12 left-0 w-full bg-white text-black rounded shadow-lg z-50">
+              {suggestions.map((suggestion) => (
+                <li
+                  key={suggestion.id}
+                  className="p-2 hover:bg-gray-200 cursor-pointer"
+                  onClick={() => handleSuggestionClick(suggestion)}
+                >
+                  {suggestion.name || suggestion.title}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
-
     </header>
   );
 };
