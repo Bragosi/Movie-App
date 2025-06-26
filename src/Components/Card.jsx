@@ -6,8 +6,8 @@ const Card = ({ data, trending, index, media_type }) => {
   const imageUrl = useSelector((state) => state.movieData.imageUrl);
   const mediaType = media_type || data.media_type || "movie"; 
   return (
-    <Link to={"/"+mediaType+"/"+data.id} className="w-full min-w-[230px] max-w-[230px] h-100 relative  rounded overflow-hidden block hover:scale-105 transition-all">
-      <img src={imageUrl + data?.poster_path} alt="trending-movies" />
+   <Link to={`/details/${mediaType}/${data.id}`} className="w-full min-w-[230px] max-w-[230px] h-100 relative  rounded overflow-hidden block hover:scale-105 transition-all">
+      <img src={imageUrl + data?.poster_path} alt="movies" />
     <div className="absolute top-4">
         {trending && 
          <div className="py-1 px-4 bg-black/60  backdrop-blur-3xl overflow-hidden rounded-r-full"> #{index} Trending</div>}
@@ -23,7 +23,7 @@ const Card = ({ data, trending, index, media_type }) => {
               : "No Rating"}
               </p>
        </div>
-    </div>f
+    </div>
     </Link>
   );
 };
