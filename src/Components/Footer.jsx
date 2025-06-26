@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-neutral-800 text-neutral-400 py-4 relative bottom-0 w-full">
+    <footer className="bg-neutral-800 text-neutral-400 py-4  w-full">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
         {/* Navigation Links */}
         <div className="flex flex-col md:flex-row items-center gap-6">

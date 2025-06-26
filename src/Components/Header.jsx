@@ -17,7 +17,7 @@ const Header = () => {
       return;
     }
     try {
-      const response = await axios.get("/search/collection", {
+      const response = await axios.get("/search/multi", {
         params: {
           query,
           include_adult: false,
@@ -85,7 +85,7 @@ const Header = () => {
         </div>
 
         {/* Search Bar */}
-        <div className="relative">
+        <div className="relative justify-end flex pr-3">
           <form
             className="flex items-center bg-n-10 border border-n-6 rounded-full px-3 h-10 w-4/5 sm:w-[17rem] lg:w-[20rem]"
             onSubmit={handleSearchSubmit}
@@ -108,11 +108,11 @@ const Header = () => {
 
           {/* Suggestions Dropdown */}
           {isSuggestionsVisible && suggestions.length > 0 && (
-            <ul className="absolute top-12 left-0 w-full bg-white text-black rounded shadow-lg z-50">
+            <ul className="absolute top-12 left-0 w-full bg-n-9 text-white rounded-md shadow-lg z-50">
               {suggestions.map((suggestion) => (
                 <li
                   key={suggestion.id}
-                  className="p-2 hover:bg-gray-200 cursor-pointer"
+                  className="p-2 hover:bg-n-5 border-b  cursor-pointer"
                   onClick={() => handleSuggestionClick(suggestion)}
                 >
                   {suggestion.name || suggestion.title}
