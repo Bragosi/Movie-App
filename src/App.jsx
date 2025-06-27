@@ -57,8 +57,7 @@ export default function App() {
                 path="/movie"
                 element={<ExplorePage key="movie" mediaType="movie" />}
               />
-<Route path="/details/:mediaType/:id" element={<DetailsPage />} />
-
+              <Route path="/details/:mediaType/:id" element={<DetailsPage />} />
             </Routes>
           </div>
           <Footer />
