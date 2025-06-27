@@ -44,11 +44,11 @@ const ExplorePage = ({ mediaType }) => {
 
   return (
     <section className="py-9">
-      <div className="container px-3">
+      <div className="w-full px-3">
         <h3 className="capitalize lg:text-xl text-lg font-semibold">
           {mediaType === "movie" ? "Popular Movies" : "Popular TV Shows"}
         </h3>
-        <div className="grid grid-cols-[repeat(auto-fit,_minmax(230px,_1fr))] gap-6">
+        <div className="grid grid-cols-[repeat(auto-fit,_minmax(230px,_1fr))] gap-6 w-full">
           {data.map((exploredata) => (
             <Card key={exploredata.id} data={exploredata} media_type={mediaType} />
           ))}

@@ -85,7 +85,7 @@ const Header = () => {
         </div>
 
         {/* Search Bar */}
-        <div className="relative justify-end flex pr-3">
+        <div className="relative items-center pt-1 justify-end flex">
           <form
             className="flex items-center bg-n-10 border border-n-6 rounded-full px-3 h-10 w-4/5 sm:w-[17rem] lg:w-[20rem]"
             onSubmit={handleSearchSubmit}
