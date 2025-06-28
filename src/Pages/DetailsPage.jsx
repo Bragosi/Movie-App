@@ -3,10 +3,17 @@ import useFetchDetails from "../hooks/useFetchDetails";
 import { useSelector } from "react-redux";
 import moment from 'moment';
 import Divider from "../Components/Divider";
+import UseFetch from '../hooks/UseFetch'
+import HorizontalScrollCard from "../Components/HorizontalScrollCard";
+import useFetch from "../hooks/UseFetch";
+import { useState } from "react";
+import VideoPlay from "../Components/VideoPlay";
 
 
 
 const DetailsPage = () => {
+  const [playVideo, setplayVideo] = useState(false)
+  const [playVideoId, setplayVideoId] = useState(" ")
   const params = useParams();
   const imageUrl = useSelector((state) => state.movieData.imageUrl);
   const { data: detailsData } = useFetchDetails(
@@ -16,28 +23,26 @@ const DetailsPage = () => {
     `${params?.mediaType}/${params?.id}/credits`
   );
 
-  console.log("Details Data:", detailsData);
-  console.log("Cast Data:", castData);
+  const { data: similarData } = UseFetch(`/${params?.mediaType}/${params?.id}/similar`)
+  const { data: recommendedData} = useFetch(`/${params?.mediaType}/${params?.id}/recommendations`)
 
   // Ensure `backdrop_path` exists before rendering the image
   if (!detailsData || !detailsData.backdrop_path) {
     return <div>No image available.</div>;
   }
 
-  const hours = Math.floor(detailsData.runtime / 60);
-  const minutes = detailsData.runtime % 60;
+const hours = Math.floor(detailsData.runtime / 60);
+const minutes = detailsData.runtime % 60;
 const director = castData?.crew?.filter((person)=> ["Director"].includes(person.job))?.map((person)=>person.name)?.join(" , ") || "Unknown"
-const writers = castData?.crew
-  ?.filter((person) =>
-    ["Writer", "Screenplay", "Story"].includes(person.job)
-  )
-  ?.map((person) => person.name)
-  ?.join(", ") || "Unknown";
-
+const writers = castData?.crew?.filter((person) =>["Writer", "Screenplay", "Story"].includes(person.job))?.map((person) => person.name)?.join(", ") || "Unknown";
+const handlePlayVideo = (detailsData)=>{
+  setplayVideoId(detailsData.id)
+  setplayVideo(true)
+}
 return (
   <div className="w-full h-full mb-3">
     {/* Backdrop Section */}
-    <div className="relative w-full h-[280px] lg:mt-[4rem]">
+    <div className="relative w-full h-[280px] lg:mt-[3rem]">
       <div className="w-full h-full">
         <img
           src={imageUrl + detailsData.backdrop_path}
@@ -56,6 +61,11 @@ return (
           alt="Movie Poster"
           className="w-[20rem] h-[25rem] object-cover rounded-xl"
         />
+        <button
+        onClick={()=>handlePlayVideo(detailsData)}
+        className="mt-3 w-full py-2 px-4 text-center bg-white text-black rounded font-bold text-lg hover:bg-gradient-to-l from-red-500 to-orange-500 hover:scale-105 transition-all">
+          Play Now
+        </button>
       </div>
 
       {/* Details Section */}
@@ -95,8 +105,42 @@ return (
            <Divider/>
             <p><span className="text-white">Writers</span> : {writers}</p>
         </div>
+        <Divider/>
+       <div>
+  <h2 className="relative text-2xl font-bold my-3">Star Casts :</h2>
+  <div className="grid grid-cols-[repeat(auto-fit,_minmax(96px,_1fr))] gap-6 pt-3">
+    {castData?.cast?.length > 0 ? (
+      castData?.cast?.filter(el =>el.profile_path).map((cast, index) => (
+        <div key={cast.id || index}>
+          <div>
+            <img
+              src={imageUrl + cast?.profile_path}
+              className="w-24 h-24 rounded-full object-cover"
+              alt={cast?.name || "Cast Member"}
+            />
+          </div>
+          <p className="font-bold text-center text-sm text-neutral-400">{cast.name}</p>
+        </div>
+      ))
+    ) : (
+      <p className="text-neutral-400">No cast information available.</p>
+    )}
+  </div>
+</div>
+
       </div>
     </div>
+
+    <div>
+      <HorizontalScrollCard data={similarData} heading={"Similar "+params?.mediaType}/>
+      <HorizontalScrollCard data={recommendedData} heading={"Recommended " +params?.mediaType }/>
+    </div>
+    {
+      playVideo && (
+        <VideoPlay videoId={playVideoId} close={()=>setplayVideo(false)}/>
+      )
+    }
+
   </div>
 );
 

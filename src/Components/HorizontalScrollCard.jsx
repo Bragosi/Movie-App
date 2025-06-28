@@ -11,7 +11,7 @@ const HorizontalScrollCard = ({ data = [], heading, trending }) => {
   }
   return (
     <div className="container mx-auto px-3 my-10">
-      <h2 className="text-xl font-bold mb-2 lg:text-2xl text-white">
+      <h2 className="text-xl font-bold mb-2 lg:text-2xl text-white capitalize">
         {heading}
       </h2>
       <div className="relative">

@@ -89,11 +89,11 @@ const SearchPage = () => {
   }, [page]);
 
   return (
-    <div className="pt-5 mb-4 ml-3">
-      <h1 className="text-2xl mb-2 font-semibold">Search Results</h1>
+    <div className="py-9">
+      <h1 className="text-2xl ml-3 mb-2 font-semibold">Search Results</h1>
       {isLoading && page === 1 && <p>Loading...</p>}
       {!isLoading && data.length === 0 && <p>No results found.</p>}
-      <div className="grid grid-cols-[repeat(auto-fit,_minmax(230px,_1fr))] gap-6">
+      <div className="grid sm:grid-cols-[repeat(auto-fit,_minmax(230px,_1fr))] grid-cols-1 gap-6 py-3 w-full justify-items-center">
         {data.map((item, index) => (
           <Card key={item.id + "heading" + index} data={item} index={index + 1} />
         ))}
