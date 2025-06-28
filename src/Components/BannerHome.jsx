@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { useEffect, useState } from "react";
+import {Link} from 'react-router-dom'
 
 const BannerHome = () => {
   const bannerData = useSelector((state) => state.movieData.bannerData);
@@ -44,7 +45,6 @@ const BannerHome = () => {
       handlePrevious(); // Swipe right
     }
   };
-
   return (
     <section className="w-full h-full">
       <div
@@ -54,6 +54,7 @@ const BannerHome = () => {
         onTouchEnd={handleTouchEnd}
       >
         {bannerData.map((data, index) => {
+           const mediaType =data.media_type || "movie"; 
           return (
             <div
               key={data.id+"bannerHome"+ index}
@@ -99,9 +100,10 @@ const BannerHome = () => {
                     <span>|</span>
                     <p>Views: {Number(data.popularity).toFixed(0)}</p>
                   </div>
-                  <button className="bg-white px-4 font-bold py-2 text-black text-sm md:text-md lg:text-lg rounded mt-3 hover:bg-gradient-to-l from-red-700 to-orange-500 shadow-md transition-all hover:scale-105">
+                 <Link to={`/details/${mediaType}/${data.id}`} >
+                 <button className="bg-white px-4 font-bold py-2 text-black text-sm md:text-md lg:text-lg rounded mt-3 hover:bg-gradient-to-l from-red-700 to-orange-500 shadow-md transition-all hover:scale-105">
                     Play Now
-                  </button>
+                  </button></Link>
                 </div>
               </div>
             </div>

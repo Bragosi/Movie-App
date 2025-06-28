@@ -13,7 +13,7 @@ import VideoPlay from "../Components/VideoPlay";
 
 const DetailsPage = () => {
   const [playVideo, setplayVideo] = useState(false)
-  const [playVideoId, setplayVideoId] = useState(" ")
+  const [ setplayVideoId] = useState(" ")
   const params = useParams();
   const imageUrl = useSelector((state) => state.movieData.imageUrl);
   const { data: detailsData } = useFetchDetails(
@@ -137,7 +137,7 @@ return (
     </div>
     {
       playVideo && (
-        <VideoPlay videoId={playVideoId} close={()=>setplayVideo(false)}/>
+        <VideoPlay data={detailsData} close={()=>setplayVideo(false)} media_type={params?.mediaType}/>
       )
     }
 
