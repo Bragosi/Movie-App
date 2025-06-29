@@ -7,19 +7,20 @@ const Footer = () => {
         {/* Navigation Links */}
         <div className="flex flex-col md:flex-row items-center gap-6">
           <Link
-            to="/about"
+            to="https://my-portfolio-website-seven-lake.vercel.app/"
             className="hover:text-white transition-colors duration-200"
           >
             About
           </Link>
           <Link
-            to="/contact"
+            to="mailto:oladejoboluwatife20003@gmail.com?subject=Hello%20Bragosi&body=I%20have%20a%20query%20about%20your%20Movie%20App."
             className="hover:text-white transition-colors duration-200"
           >
             Contact
           </Link>
+
           <Link
-            to="/github"
+            to="https://github.com/Bragosi/Movie-App"
             className="hover:text-white transition-colors duration-200"
           >
             View Github
