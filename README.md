@@ -34,12 +34,17 @@ Revenue and budget statistics
 ## 🛠️ Technologies Used
 
 **Frontend Frameworks and Libraries:**
+
 1.React: For building a dynamic and interactive user interface.
+
 2.Redux: State management for seamless data flow.
+
 3.React Router: For navigating between pages.
 
 **Styling and Animations:**
+
 1.Tailwind CSS: Utility-first styling for a clean and responsive design.
+
 2.GSAP: For creating captivating animations and effects.
 
 **API Integrations:** TMDb API: Provides rich data on movies, TV shows, and cast members.
@@ -58,13 +63,13 @@ Revenue and budget statistics
 ----
 ## 🏆 Highlights
 
-1.🎬 Dive into trending content.
+🎬 Dive into trending content.
 
-2.📽️ Watch trailers seamlessly.
+📽️ Watch trailers seamlessly.
 
-3.🌟 Discover personalized recommendations.
+🌟 Discover personalized recommendations.
 
-4.🖼️ Experience smooth and responsive UI.
+🖼️ Experience smooth and responsive UI.
 
 Thank you for exploring the Movie Database App! I hope you enjoy using it as much as I enjoyed building it. Feedback is always welcome! 😊
 
