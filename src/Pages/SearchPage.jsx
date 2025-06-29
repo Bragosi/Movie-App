@@ -45,7 +45,10 @@ const SearchPage = () => {
       setData((prevData) => [...prevData, ...(response.data?.results || [])]);
 
       // Check if more pages are available
-      if (response.data.results.length === 0 || currentPage >= response.data.total_pages) {
+      if (
+        response.data.results.length === 0 ||
+        currentPage >= response.data.total_pages
+      ) {
         setHasMore(false);
       }
     } catch (error) {
@@ -95,7 +98,11 @@ const SearchPage = () => {
       {!isLoading && data.length === 0 && <p>No results found.</p>}
       <div className="grid sm:grid-cols-[repeat(auto-fit,_minmax(230px,_1fr))] grid-cols-1 gap-6 py-3 w-full justify-items-center">
         {data.map((item, index) => (
-          <Card key={item.id + "heading" + index} data={item} index={index + 1} />
+          <Card
+            key={item.id + "heading" + index}
+            data={item}
+            index={index + 1}
+          />
         ))}
       </div>
       {isLoading && page > 1 && <p>Loading more...</p>}

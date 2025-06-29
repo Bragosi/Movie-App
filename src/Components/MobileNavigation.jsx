@@ -1,5 +1,5 @@
-import { mobileNavigation } from '../Contants/index'; // Fix typo in path
-import { NavLink } from 'react-router-dom';
+import { mobileNavigation } from "../Contants/index"; // Fix typo in path
+import { NavLink } from "react-router-dom";
 
 const MobileNavigation = () => {
   return (
@@ -13,8 +13,8 @@ const MobileNavigation = () => {
               to={item.url} // Add to prop for navigation
               className={({ isActive }) =>
                 isActive
-                  ? 'flex flex-col items-center text-n-14 font-bold'
-                  : 'flex flex-col items-center text-white hover:text-gray-400'
+                  ? "flex flex-col items-center text-n-14 font-bold"
+                  : "flex flex-col items-center text-white hover:text-gray-400"
               }
             >
               <Icon className="w-6 h-6 mb-1" />

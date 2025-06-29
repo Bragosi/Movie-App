@@ -58,7 +58,7 @@ const Header = () => {
         {/* Logo Section */}
         <Link to="/" className="flex items-center gap-2">
           <img src={logo} alt="logo" width={50} height={40} />
-          <h1 className="text-xl font-sans text-white">Movieo</h1>
+          <h1 className="text-2xl font-mono text-white">MOVOSI</h1>
         </Link>
 
         {/* Navigation Menu */}

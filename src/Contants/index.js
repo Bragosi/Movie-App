@@ -7,15 +7,14 @@ export const navigation = [
     id: "1",
     title: "TV Shows",
     url: "/tv",
-    icon: PiTelevisionDuotone
+    icon: PiTelevisionDuotone,
   },
   {
     id: "2",
     title: "Movies",
     url: "/movie",
-    icon: BiSolidMoviePlay
+    icon: BiSolidMoviePlay,
   },
-
 ];
 
 export const mobileNavigation = [
@@ -23,24 +22,24 @@ export const mobileNavigation = [
     id: "1",
     title: "Home",
     url: "/",
-    icon: IoMdHome
+    icon: IoMdHome,
   },
   {
     id: "2",
     title: "TV Shows",
     url: "/tv",
-    icon: PiTelevisionDuotone
+    icon: PiTelevisionDuotone,
   },
   {
     id: "3",
     title: "Movies",
     url: "/movie",
-    icon: BiSolidMoviePlay
+    icon: BiSolidMoviePlay,
   },
-   {
+  {
     id: "4",
     title: "Search",
     url: "/search",
-    icon: IoSearchOutline
+    icon: IoSearchOutline,
   },
 ];

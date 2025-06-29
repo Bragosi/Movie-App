@@ -18,6 +18,12 @@ const Footer = () => {
           >
             Contact
           </Link>
+          <Link
+            to="/github"
+            className="hover:text-white transition-colors duration-200"
+          >
+            View Github
+          </Link>
         </div>
 
         {/* Footer Text */}

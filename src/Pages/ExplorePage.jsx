@@ -42,22 +42,27 @@ const ExplorePage = ({ mediaType }) => {
     return () => window.removeEventListener("scroll", handleScroll); // Cleanup
   }, []);
 
- return (
-  <section className="py-9">
-    <div className="w-full px-3">
-      <h3 className="capitalize lg:text-xl text-lg font-semibold">
-        {mediaType === "movie" ? "Popular Movies" : "Popular TV Shows"}
-      </h3>
-      <div className="grid py-4 sm:grid-cols-[repeat(auto-fit,_minmax(230px,_1fr))] grid-cols-1 gap-6 w-full justify-items-center">
-        {data.map((exploredata) => (
-          <Card key={exploredata.id} data={exploredata} media_type={mediaType} />
-        ))}
+  return (
+    <section className="py-9">
+      <div className="w-full px-3">
+        <h3 className="capitalize lg:text-xl text-lg font-semibold">
+          {mediaType === "movie" ? "Popular Movies" : "Popular TV Shows"}
+        </h3>
+        <div className="grid py-4 sm:grid-cols-[repeat(auto-fit,_minmax(230px,_1fr))] grid-cols-1 gap-6 w-full justify-items-center">
+          {data.map((exploredata) => (
+            <Card
+              key={exploredata.id}
+              data={exploredata}
+              media_type={mediaType}
+            />
+          ))}
+        </div>
+        {isLoading && (
+          <p>Loading more {mediaType === "movie" ? "movies" : "TV shows"}...</p>
+        )}
       </div>
-      {isLoading && <p>Loading more {mediaType === "movie" ? "movies" : "TV shows"}...</p>}
-    </div>
-  </section>
-);
-
+    </section>
+  );
 };
 
 export default ExplorePage;

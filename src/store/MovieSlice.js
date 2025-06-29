@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   bannerData: [],
-  imageUrl : ""
+  imageUrl: "",
 };
 
 export const MovieSlice = createSlice({
@@ -12,9 +12,9 @@ export const MovieSlice = createSlice({
     setBannerData: (state, action) => {
       state.bannerData = action.payload;
     },
-    setImageUrl: (state, action)=>{
-      state.imageUrl = action.payload
-    }
+    setImageUrl: (state, action) => {
+      state.imageUrl = action.payload;
+    },
   },
 });
 

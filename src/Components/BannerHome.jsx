@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { useEffect, useState } from "react";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const BannerHome = () => {
   const bannerData = useSelector((state) => state.movieData.bannerData);
@@ -17,7 +17,9 @@ const BannerHome = () => {
   };
 
   const handlePrevious = () => {
-    setCurrentImage((prev) => (prev - 1 + bannerData.length) % bannerData.length);
+    setCurrentImage(
+      (prev) => (prev - 1 + bannerData.length) % bannerData.length
+    );
   };
 
   // Handle automatic scrolling
@@ -54,10 +56,10 @@ const BannerHome = () => {
         onTouchEnd={handleTouchEnd}
       >
         {bannerData.map((data, index) => {
-           const mediaType =data.media_type || "movie"; 
+          const mediaType = data.media_type || "movie";
           return (
             <div
-              key={data.id+"bannerHome"+ index}
+              key={data.id + "bannerHome" + index}
               style={{ transform: `translateX(-${currentImage * 100}%)` }}
               className="min-h-[450px] transition-transform duration-700 ease-in-out lg:min-h-full min-w-full overflow-hidden relative group"
             >
@@ -100,10 +102,11 @@ const BannerHome = () => {
                     <span>|</span>
                     <p>Views: {Number(data.popularity).toFixed(0)}</p>
                   </div>
-                 <Link to={`/details/${mediaType}/${data.id}`} >
-                 <button className="bg-white px-4 font-bold py-2 text-black text-sm md:text-md lg:text-lg rounded mt-3 hover:bg-gradient-to-l from-red-700 to-orange-500 shadow-md transition-all hover:scale-105">
-                    Play Now
-                  </button></Link>
+                  <Link to={`/details/${mediaType}/${data.id}`}>
+                    <button className="bg-white px-4 font-bold py-2 text-black text-sm md:text-md lg:text-lg rounded mt-3 hover:bg-gradient-to-l from-red-700 to-orange-500 shadow-md transition-all hover:scale-105">
+                      Play Now
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
