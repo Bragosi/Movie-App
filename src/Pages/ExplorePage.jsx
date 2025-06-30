@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Card from "../Components/Card";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const ExplorePage = ({ mediaType }) => {
   const [data, setData] = useState([]); // Holds the TV or movie data
   const [page, setPage] = useState(1); // Tracks the current page
-  const [isLoading, setIsLoading] = useState(false); // Tracks loading state
+  const [isLoading, setIsLoading] = useState(true); // Tracks loading state
 
   const fetchData = async () => {
     setIsLoading(true);
@@ -42,6 +43,15 @@ const ExplorePage = ({ mediaType }) => {
     return () => window.removeEventListener("scroll", handleScroll); // Cleanup
   }, []);
 
+  if (isLoading && page === 1) {
+    // Show spinner while loading the initial page
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <ClipLoader color="#474060" size={50} />
+      </div>
+    );
+  }
+
   return (
     <section className="py-9">
       <div className="w-full px-3">
@@ -58,7 +68,9 @@ const ExplorePage = ({ mediaType }) => {
           ))}
         </div>
         {isLoading && (
-          <p>Loading more {mediaType === "movie" ? "movies" : "TV shows"}...</p>
+          <div className="flex justify-center py-4">
+            <ClipLoader color="#474060" size={30} />
+          </div>
         )}
       </div>
     </section>

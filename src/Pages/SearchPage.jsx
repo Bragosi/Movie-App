@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Card from "../Components/Card";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const SearchPage = () => {
   const location = useLocation();
@@ -39,7 +40,6 @@ const SearchPage = () => {
         });
       }
 
-      console.log("API Response:", response.data);
 
       // Append new results to existing data
       setData((prevData) => [...prevData, ...(response.data?.results || [])]);
@@ -91,6 +91,14 @@ const SearchPage = () => {
     }
   }, [page]);
 
+   if (isLoading && page === 1) {
+    // Show spinner while loading the initial page
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <ClipLoader color="#474060" size={50} />
+      </div>
+    );
+  }
   return (
     <div className="py-9">
       <h1 className="text-2xl ml-3 mb-2 font-semibold">Search Results</h1>
@@ -105,7 +113,12 @@ const SearchPage = () => {
           />
         ))}
       </div>
-      {isLoading && page > 1 && <p>Loading more...</p>}
+      {isLoading && page > 1 && 
+      (
+          <div className="flex justify-center py-4">
+            <ClipLoader color="#474060" size={30} />
+          </div>
+      )}
       {!hasMore && <p>No more results available.</p>}
     </div>
   );

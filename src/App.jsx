@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { setBannerData, setImageUrl } from "./store/MovieSlice";
 import { Provider } from "react-redux";
 import { store } from "./store/Store";
+import ScrollToTop from "./hooks/ScrollToTop";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -46,6 +47,7 @@ export default function App() {
         <div className="pb-14 lg:pb-0">
           <Header />
           <div className="xl:mt-13 mt-11">
+            <ScrollToTop/>
             <Routes>
               <Route path="/" element={<Homepage />} />
               <Route path="/search" element={<SearchPage />} />
