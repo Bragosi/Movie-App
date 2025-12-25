@@ -9,15 +9,15 @@ Welcome to the Movie Database App, a modern platform for discovering, exploring,
 **2. Detailed Information:**
 Get comprehensive details about your favorite movies and TV shows, including:
 
-Title, tagline, and overview
+- Title, tagline, and overview
 
-Cast and crew members
+- Cast and crew members
 
-Release date and runtime
+- Release date and runtime
 
-Ratings and viewer counts
+- Ratings and viewer counts
 
-Revenue and budget statistics
+- Revenue and budget statistics
 
 
 **3. Watch Trailers:** Enjoy high-quality trailers embedded directly within the app via YouTube integration.
@@ -31,7 +31,7 @@ Revenue and budget statistics
 
 ----
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 **Frontend Frameworks and Libraries:**
 
@@ -51,25 +51,25 @@ Revenue and budget statistics
 
 ----
 
-## 🚀 Live Demo
+##  Live Demo
 
 [View Live Demo here](https://movie-app-tan-zeta-48.vercel.app/)
 
 ----
 
-## 📬 Contact
+##  Contact
   Got questions, suggestions, or feedback? Reach out to me:
   Email: oladejoboluwatife20003@gmail.com
 ----
-## 🏆 Highlights
+## Highlights
 
-🎬 Dive into trending content.
+- Dive into trending content.
 
-📽️ Watch trailers seamlessly.
+- Watch trailers seamlessly.
 
-🌟 Discover personalized recommendations.
+- Discover personalized recommendations.
 
-🖼️ Experience smooth and responsive UI.
+- Experience smooth and responsive UI.
 
 Thank you for exploring the Movie Database App! I hope you enjoy using it as much as I enjoyed building it. Feedback is always welcome! 😊
 
