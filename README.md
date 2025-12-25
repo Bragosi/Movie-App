@@ -1,4 +1,4 @@
-## 🎥 Movie Database Application
+##  Movie Database Application
 
 Welcome to the Movie Database App, a modern platform for discovering, exploring, and enjoying movies and TV shows! This app offers detailed information, trailers, cast and crew insights, and personalized recommendations, all wrapped in a sleek, user-friendly design.
 
@@ -18,7 +18,6 @@ Get comprehensive details about your favorite movies and TV shows, including:
 - Ratings and viewer counts
 
 - Revenue and budget statistics
-
 
 **3. Watch Trailers:** Enjoy high-quality trailers embedded directly within the app via YouTube integration.
 
@@ -70,6 +69,18 @@ Get comprehensive details about your favorite movies and TV shows, including:
 - Discover personalized recommendations.
 
 - Experience smooth and responsive UI.
+
+
+---
+
+## Screenshots 
+Homepage
+<img width="1366" height="641" alt="Screenshot (110)" src="https://github.com/user-attachments/assets/4df0c1e7-c30c-4a80-b397-8ea976ee0abe" />
+
+
+<img width="1366" height="662" alt="Screenshot (112)" src="https://github.com/user-attachments/assets/f8e311f2-6818-4d37-b750-e379cbc801bf" />
+
+<img width="1366" height="633" alt="Screenshot (113)" src="https://github.com/user-attachments/assets/3d774c36-c687-4d69-8397-45a583b04de7" />
 
 Thank you for exploring the Movie Database App! I hope you enjoy using it as much as I enjoyed building it. Feedback is always welcome! 😊
 
